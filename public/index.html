@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Mix Nutrição Animal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            // Tons baseados na nova identidade visual (Azul Marinho, Vermelho e Branco)
+                            dark: '#112240',    // Azul Escuro (Navy)
+                            primary: '#1A365D', // Azul Principal
+                            light: '#DBEAFE',   // Azul Claro
+                            accent: '#DC2626',  // Vermelho
+                            surface: '#FFFFFF'  // Branco
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A365D; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #112240; 
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-brand-surface antialiased selection:bg-brand-primary selection:text-white">
+
+    <!-- Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="block">
+                        <img class="h-14 w-auto object-contain" src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FCaptura%20de%20tela%202026-03-14%20100844.png?alt=media&token=1b6ca5e9-9e39-4c8a-8d2b-899d24150eaf" alt="Logo Real Mix">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-brand-primary font-medium transition-colors">Início</a>
+                    <a href="#sobre" class="text-gray-600 hover:text-brand-primary font-medium transition-colors">A Empresa</a>
+                    <a href="#produtos" class="text-gray-600 hover:text-brand-primary font-medium transition-colors">Nossas Rações</a>
+                    <a href="#contato" class="text-gray-600 hover:text-brand-primary font-medium transition-colors">Contato</a>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/5598985958805" target="_blank" class="bg-brand-primary hover:bg-brand-dark text-white px-6 py-2 rounded-full font-semibold transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Fale Conosco
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-brand-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#inicio" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 rounded-md">Início</a>
+                <a href="#sobre" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 rounded-md">A Empresa</a>
+                <a href="#produtos" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 rounded-md">Nossas Rações</a>
+                <a href="#contato" onclick="toggleMobileMenu()" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-primary hover:bg-gray-50 rounded-md">Contato</a>
+                <a href="https://wa.me/5598985958805" target="_blank" class="mt-4 block w-full text-center bg-brand-primary text-white px-5 py-3 rounded-xl font-semibold">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> Chamar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 relative bg-gradient-to-br from-brand-dark to-brand-primary overflow-hidden">
+        <!-- Elementos decorativos de fundo -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 z-0" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-accent opacity-20 rounded-full blur-3xl z-0"></div>
+        <div class="absolute bottom-10 -left-10 w-72 h-72 bg-brand-light opacity-10 rounded-full blur-2xl z-0"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center gap-8">
+            
+            <!-- Text Content -->
+            <div class="max-w-4xl space-y-6 flex flex-col items-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 text-blue-100 font-semibold text-sm mb-2 border border-blue-400/30 backdrop-blur-sm">
+                    <i class="fa-solid fa-leaf mr-1"></i> Excelência em Nutrição Animal
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                    Soluções nutricionais completas ao <span class="text-brand-accent">agronegócio</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 max-w-2xl">
+                    A Real Mix combina tecnologia, qualidade e eficiência para desenvolver rações balanceadas que contribuem para o melhor desempenho, produtividade e saúde dos seus animais.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+                    <a href="#produtos" class="w-full sm:w-auto px-8 py-4 bg-brand-accent hover:bg-red-700 text-white rounded-xl font-bold text-lg transition-colors shadow-lg shadow-red-900/20 text-center">
+                        Conhecer Produtos
+                    </a>
+                    <a href="#sobre" class="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-brand-dark text-white rounded-xl font-bold text-lg transition-colors text-center">
+                        Nossa História
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sobre a Empresa Section -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Quem Somos & Nossa História</h2>
+                <div class="w-24 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Image -->
+                <div class="flex-1 relative w-full">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FFOTO%20INDUSTRIA.JPG?alt=media&token=b7e20f44-4d35-4f4d-852d-dcb4769496e2" alt="Indústria Real Mix" class="w-full h-auto rounded-2xl shadow-xl object-cover">
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-6 -right-6 lg:-right-8 bg-brand-primary text-white p-6 rounded-2xl shadow-xl hidden md:block">
+                        <div class="text-4xl font-bold mb-1">+Qualidade</div>
+                        <div class="text-sm font-medium opacity-90">No Agronegócio</div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="flex-1 space-y-6 text-gray-600 text-lg leading-relaxed">
+                    <p>
+                        A <strong class="text-brand-dark">Real Mix</strong> é uma indústria moderna de nutrição animal que nasceu com o propósito de oferecer produtos de alta qualidade para contribuir com o desenvolvimento e a produtividade do agronegócio brasileiro.
+                    </p>
+                    <p>
+                        Localizada no município de <strong class="text-gray-800">Olho d'Água das Cunhãs</strong>, no estado do <strong class="text-gray-800">Maranhão</strong>, a empresa conta com um moderno parque industrial e excelente capacidade de produção, permitindo atender com eficiência e qualidade as demandas do mercado.
+                    </p>
+                    <p>
+                        Comprometida com a excelência, a Real Mix desenvolve soluções nutricionais para diferentes cadeias produtivas, oferecendo produtos destinados à alimentação de <strong>gado de corte, gado de leite, suínos, aves, peixes, caprinos e pets</strong>.
+                    </p>
+                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-brand-primary mt-6">
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Nossa Missão</h3>
+                        <p class="text-base">
+                            Levar ao produtor rural alimentos de alta qualidade que garantam melhores resultados no campo. Em constante crescimento, seguimos investindo em tecnologia e inovação, fortalecendo nossa presença nos cenários nacional e internacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-20 bg-brand-dark relative overflow-hidden text-white">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Conheça Nossa Estrutura</h2>
+                <p class="text-blue-100 text-lg">Assista ao vídeo e veja de perto a qualidade dos nossos processos produtivos.</p>
+            </div>
+            
+            <div class="relative bg-black rounded-2xl shadow-2xl overflow-hidden aspect-video border-4 border-brand-primary/30">
+                <!-- Video player -->
+                <video controls class="w-full h-full object-cover" poster="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FFOTO%20INDUSTRIA.JPG?alt=media&token=b7e20f44-4d35-4f4d-852d-dcb4769496e2">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FINDUSTRIA%202.MOV?alt=media&token=e1edc108-a8c2-4fea-81ee-5e0ef4b59e35" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossas Rações (Produtos) -->
+    <section id="produtos" class="py-20 bg-brand-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-primary font-bold tracking-wider uppercase text-sm">Portfólio Completo</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Nossas Rações</h2>
+                <div class="w-24 h-1 bg-brand-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Desenvolvemos soluções nutricionais para diversas cadeias produtivas, atendendo produtores que buscam qualidade, desempenho e rentabilidade.
+                </p>
+            </div>
+
+            <!-- Blocos de Produtos (Substituindo o Grid antigo) -->
+            <div class="space-y-12">
+                
+                <!-- Bloco: Aves (Imagem Esquerda) -->
+                <div class="flex flex-col lg:flex-row items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FELEMENTO%20FRANGO.png?alt=media&token=a2221db1-86fd-49cd-87ca-adac1ac4b63b" alt="Linha Aves" class="relative z-10 w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Linha Aves</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Rações desenvolvidas para todas as fases de criação, garantindo nutrição equilibrada e melhor desempenho.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Frango Inicial</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Frango Crescimento</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Frango Engorda</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Frango Crescimento e Engorda</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Postura 16</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Suínos (Imagem Direita) -->
+                <div class="flex flex-col lg:flex-row-reverse items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2Fsuinos.png?alt=media&token=bc5426ce-45ef-4289-be24-1a070f4e1ff5" alt="Linha Suínos" class="relative z-10 w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Linha Suínos</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Nutrição completa em diferentes fases, proporcionando crescimento saudável e melhor conversão alimentar.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Suíno Inicial</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Suíno Crescimento</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Suíno Engorda</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Suíno Gestação e Lactação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Bovinos de Leite (Imagem Esquerda) -->
+                <div class="flex flex-col lg:flex-row items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2Fbovinos.png?alt=media&token=5e3e1d93-261f-445b-82a7-fd4e145d876c" alt="Bovinos de Leite" class="relative z-10 w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Bovinos de Leite</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Formulações para exigências de vacas em lactação, melhorando produção de leite e desempenho.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Bovino Leite 20</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Bovino Leite 22</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Bovino Leite 24</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Bovinos de Corte (Imagem Direita) -->
+                <div class="flex flex-col lg:flex-row-reverse items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2Fbovinos.png?alt=media&token=5e3e1d93-261f-445b-82a7-fd4e145d876c" alt="Bovinos de Corte" class="relative z-10 w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Bovinos de Corte</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Rações desenvolvidas para maximizar ganho de peso e eficiência em sistemas de engorda e confinamento.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Confina 14</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Confina 16</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Confina 18</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Caprinos (Imagem Esquerda) -->
+                <div class="flex flex-col lg:flex-row items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-8 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2Fcaprinos.png?alt=media&token=c704cd18-c65d-418c-839a-6e37022e9f4b" alt="Linha Caprinos" class="relative z-10 w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Linha Caprinos</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Soluções nutricionais específicas para caprinos, contribuindo para desenvolvimento e produtividade.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Caprino 16</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Caprino 17</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Caprino 20</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Peixes (Carrossel Imagem Direita) -->
+                <div class="flex flex-col lg:flex-row-reverse items-stretch bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="lg:w-2/5 bg-blue-50/50 p-0 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors z-0"></div>
+                        
+                        <!-- Carrossel -->
+                        <div id="peixes-carousel" class="relative w-full h-full flex items-center overflow-hidden min-h-[300px] z-10">
+                            <!-- Slides container -->
+                            <div id="peixes-slides" class="flex transition-transform duration-500 ease-in-out w-full h-full items-center">
+                                <!-- Slide 1 -->
+                                <div class="w-full h-full flex-shrink-0">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FCaptura%20de%20tela%202026-03-14%20100601.png?alt=media&token=82469934-b70c-489b-8352-64bcfa3a72cd" alt="Linha Peixes 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="w-full h-full flex-shrink-0">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FCaptura%20de%20tela%202026-03-14%20100611.png?alt=media&token=4bf2d2cf-0beb-4d0e-bd61-e83e9d404f14" alt="Linha Peixes 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="w-full h-full flex-shrink-0 flex items-center justify-center p-8">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FCaptura%20de%20tela%202026-03-14%20100622.png?alt=media&token=472b9331-1958-48cb-8e70-526b11b3aaf4" alt="Linha Peixes 3" class="w-full max-w-xs h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </div>
+                            
+                            <!-- Botões de Controle -->
+                            <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-brand-dark/50 hover:bg-brand-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors z-20 focus:outline-none">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-brand-dark/50 hover:bg-brand-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors z-20 focus:outline-none">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            
+                            <!-- Indicadores -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                                <button onclick="setSlide(0)" class="w-2.5 h-2.5 rounded-full bg-brand-primary indicator-peixes focus:outline-none transition-colors"></button>
+                                <button onclick="setSlide(1)" class="w-2.5 h-2.5 rounded-full bg-blue-200 indicator-peixes focus:outline-none transition-colors"></button>
+                                <button onclick="setSlide(2)" class="w-2.5 h-2.5 rounded-full bg-blue-200 indicator-peixes focus:outline-none transition-colors"></button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <h3 class="text-3xl font-bold text-brand-dark mb-4">Linha Peixes</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Rações balanceadas para piscicultura, desenvolvidas para proporcionar crescimento saudável.</p>
+                        <div>
+                            <p class="font-bold text-brand-primary text-sm uppercase tracking-wide border-b-2 border-brand-accent/20 pb-2 mb-4 inline-block">Produtos Disponíveis</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-gray-700 font-medium">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Alevinos 48</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Peixes 26</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Peixes 28</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Peixes 32</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Peixes 36</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent mr-3"></i> Peixes 40</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco: Pets (Destaque Central) -->
+                <div class="bg-brand-dark rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-brand-dark relative group">
+                    <div class="absolute inset-0 bg-brand-primary/20 group-hover:bg-brand-primary/40 transition-colors z-0"></div>
+                    <div class="h-2 bg-brand-accent w-full relative z-10"></div>
+                    <div class="flex flex-col md:flex-row items-stretch relative z-10 h-full">
+                        
+                        <!-- Imagem do Produto Pets -->
+                        <div class="md:w-2/5 flex items-center justify-center bg-white/5 backdrop-blur-sm relative overflow-hidden">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/racaotrinnity%2FLAN%C3%87AMENTO%201.png?alt=media&token=44f036d2-22da-4f67-9671-283b966e79f0" alt="Ração Trinnity" class="relative z-10 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 drop-shadow-2xl">
+                        </div>
+
+                        <!-- Texto Pets -->
+                        <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-center text-center md:text-left">
+                            <div class="inline-block py-1.5 px-4 rounded-full bg-brand-accent text-white font-bold text-xs mb-4 uppercase tracking-wider shadow-md self-center md:self-start">
+                                Linha Premium
+                            </div>
+                            <h3 class="text-4xl font-bold text-white mb-4">Linha Pets - Trinnity</h3>
+                            <p class="text-blue-100 text-lg md:text-xl leading-relaxed mb-8">
+                                A Real Mix também desenvolve alimentos para pets com alto padrão de qualidade. A linha <strong class="text-white">Trinnity</strong> é um alimento premium formulado para cães de todas as raças, oferecendo nutrição equilibrada com ingredientes selecionados que contribuem para a saúde, vitalidade e bem-estar dos animais.
+                            </p>
+                            <div>
+                                <a href="https://racaotrinnity.web.app/#sobre" target="_blank" class="inline-block px-8 py-4 bg-brand-accent hover:bg-red-700 text-white rounded-xl font-bold text-lg transition-colors shadow-lg shadow-red-900/20 text-center">
+                                    Conhecer Linha Trinnity <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-brand-dark text-white pt-16 pb-8 border-t-4 border-brand-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="space-y-6">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/conecta-web-digital.firebasestorage.app/o/realmixracoes%2FCaptura%20de%20tela%202026-03-14%20100844.png?alt=media&token=1b6ca5e9-9e39-4c8a-8d2b-899d24150eaf" alt="Logo Real Mix Branca" class="h-16 bg-white p-2 rounded-xl object-contain">
+                    <p class="text-blue-100/80 pr-4">
+                        Tecnologia, qualidade e eficiência para oferecer soluções nutricionais completas ao agronegócio.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/realmixnutricaoanimal?igsh=dmwxdmM2dXhub2Y3" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1HfJH9jWJi/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-brand-accent">Links Rápidos</h4>
+                    <ul class="space-y-3 text-blue-100/80">
+                        <li><a href="#inicio" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-primary"></i> Início</a></li>
+                        <li><a href="#sobre" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-primary"></i> Quem Somos</a></li>
+                        <li><a href="#produtos" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-primary"></i> Nossas Rações</a></li>
+                        <li><a href="#contato" class="hover:text-white transition-colors"><i class="fa-solid fa-chevron-right text-xs mr-2 text-brand-primary"></i> Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-brand-accent">Fale Conosco</h4>
+                    <ul class="space-y-4 text-blue-100/80">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-brand-primary text-xl"></i>
+                            <span>Rodovia MA 008, Km 12<br>Município de Olho d’Água das Cunhãs<br>Maranhão - CEP 65706-000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-brand-primary text-xl"></i>
+                            <a href="tel:+5598985958805" class="hover:text-white transition-colors">(98) 98595-8805</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-brand-primary text-xl"></i>
+                            <a href="mailto:contato@realmixnutricaoanimal.com.br" class="hover:text-white transition-colors">contato@realmixnutricaoanimal.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-blue-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-blue-100/60">
+                <p>&copy; 2026 REAL MIX NUTRIÇÃO ANIMAL LTDA. Todos os direitos reservados.</p>
+                <p class="mt-2 md:mt-0">CNPJ: 35.189.969/0001-37</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5598985958805" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Script para controle do menu mobile e Carrossel -->
+    <script>
+        // --- Menu Mobile ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // --- Carrossel Linha Peixes ---
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let slideInterval;
+
+        function updateCarousel() {
+            const slides = document.getElementById('peixes-slides');
+            if(slides) {
+                // Desloca o carrossel em porcentagem (-0%, -100%, -200%)
+                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Atualiza a cor dos indicadores (bolinhas)
+                const indicators = document.querySelectorAll('.indicator-peixes');
+                indicators.forEach((ind, index) => {
+                    if (index === currentSlide) {
+                        ind.classList.remove('bg-blue-200');
+                        ind.classList.add('bg-brand-primary');
+                    } else {
+                        ind.classList.remove('bg-brand-primary');
+                        ind.classList.add('bg-blue-200');
+                    }
+                });
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+            resetInterval();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetInterval();
+        }
+
+        function setSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 4000); // Muda a imagem a cada 4 segundos
+        }
+
+        // Inicia o carrossel automático assim que a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            slideInterval = setInterval(nextSlide, 4000);
+        });
+    </script>
+</body>
+</html>
